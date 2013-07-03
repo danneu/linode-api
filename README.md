@@ -73,7 +73,6 @@ Or you can use the `linode-request` directly. Pass in the API method-keyword and
 - Support error codes.
 - Support batch-requests.
 - Let user declare `:api-key` once to reduce REPL verbosity.
-- Expose an alternative API: a method for each Linode call to reduce REPL verbosity.
 - Add optional 3rd parameter: a map that will be merged into clj-http options.
 
 ## License
