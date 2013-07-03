@@ -14,12 +14,14 @@ https://www.linode.com/api/
 
 ## Usage
 
-Every Linode API method is exposed as a function. Just replace "." with "-".
-
 ``` clojure
 (ns my.app
   (:use [linode-api.core]))
 ```
+
+Every Linode API method is exposed as a function. Just replace "." with "-".
+
+### Examples
 
 Get your API key:
 
@@ -55,7 +57,8 @@ All other methods require the `:api-key` param:
 ;           {:location "Tokyo, JP" :datacenterid 8}]
 ;    :action "avail.datacenters"}
 ```
-----
+
+### Alternative API
 
 Our you can use the `linode-request` directly. Pass in the API method-keyword and a map of params.
 
