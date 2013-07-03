@@ -2,13 +2,13 @@
   (:require [clj-http.client :as client]
             [clojure.string :as str]))
 
-(defn- underscore-keys
+(defn- underscorize-keys
   "Turn {:foo-bar _} into {:foo_bar _}.
    Prepares params for clj-http."
   [hmap]
-  (let [underscore-key (fn [key]
+  (let [underscorize-key (fn [key]
                            (keyword (str/replace (name key) "-" "_")))]
-    (into {} (map (fn [[k v]] [(underscore-key k) v]) hmap))))
+    (into {} (map (fn [[k v]] [(underscorize-key k) v]) hmap))))
 
 (defn- hyphenize-keys
   "Turn {:FOO_BAR [{:BAZ_QUX _}]} into {:foo-bar [{:baz-qux _}]}.
@@ -31,7 +31,7 @@
   [meth params]
   (let [url "https://api.linode.com"
         api-action (name meth)
-        query-params (merge (underscore-params params)
+        query-params (merge (underscorize-keys params)
                             {:api_action api-action})
         response (client/post url {:as :json
                                    :query-params query-params})]
