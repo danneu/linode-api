@@ -1,4 +1,4 @@
-# linode
+# linode-api
 
 A simple Linode API wrapper for Clojure.
 
@@ -18,13 +18,13 @@ A single method `request` is provided. Pass in the API method and a map of param
 
 ``` clojure
 (ns my.app
-  (:require [linode.core :as linode]))
+  (:require [linode-api.core :as linode-api]))
 ```
   
 Get your API key:
 
 ``` clojure
-(linode/request :user.getapikey {:username "danneu" :password "..."})
+(linode-api/request :user.getapikey {:username "danneu" :password "..."})
 ;=> {:errorarray [] 
 ;    :data {:username "danneu" 
 ;           :api-key "..."} 
@@ -34,7 +34,7 @@ Get your API key:
 All other methods require the `:api-key` param:
 
 ``` clojure
-(linode/request :account.info {:api-key api-key})
+(linode-api/request :account.info {:api-key api-key})
 ;=> {:errorarray []
 ;    :data {:transfer-used 1
 ;           :transfer-billable 0
@@ -45,7 +45,7 @@ All other methods require the `:api-key` param:
 ```
 
 ``` clojure
-(linode/request :avail.datacenters {:api-key api-key})
+(linode-api/request :avail.datacenters {:api-key api-key})
 ;=> {:errorarray [],
 ;    :data [{:location "Dallas, TX, USA" :datacenterid 2}
 ;           {:location "Fremont, CA, USA" :datacenterid 3}
@@ -59,6 +59,7 @@ All other methods require the `:api-key` param:
 ## Todo
 
 - Support error codes.
+- Support batch-requests.
 - Let user declare `:api-key` once to reduce REPL verbosity.
 - Expose an alternative API: a method for each Linode call to reduce REPL verbosity.
 - Add optional 3rd parameter: a map that will be merged into clj-http options.

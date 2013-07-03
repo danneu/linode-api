@@ -1,4 +1,4 @@
-(ns linode.core
+(ns linode-api.core
   (:require [clj-http.client :as client]
             [clojure.string :as str]))
 
