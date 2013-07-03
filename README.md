@@ -14,17 +14,17 @@ https://www.linode.com/api/
 
 ## Usage
 
-A single method `request` is provided. Pass in the API method and a map of params.
+Every Linode API method is exposed as a function. Just replace "." with "-".
 
 ``` clojure
 (ns my.app
-  (:require [linode-api.core :as linode-api]))
+  (:use [linode-api.core]))
 ```
-  
+
 Get your API key:
 
 ``` clojure
-(linode-api/request :user.getapikey {:username "danneu" :password "..."})
+(user-getapikey {:username "danneu" :password "..."})
 ;=> {:errorarray [] 
 ;    :data {:username "danneu" 
 ;           :api-key "..."} 
@@ -34,7 +34,7 @@ Get your API key:
 All other methods require the `:api-key` param:
 
 ``` clojure
-(linode-api/request :account.info {:api-key api-key})
+(account-info {:api-key api-key})
 ;=> {:errorarray []
 ;    :data {:transfer-used 1
 ;           :transfer-billable 0
@@ -45,7 +45,7 @@ All other methods require the `:api-key` param:
 ```
 
 ``` clojure
-(linode-api/request :avail.datacenters {:api-key api-key})
+(avail-datacenters {:api-key api-key})
 ;=> {:errorarray [],
 ;    :data [{:location "Dallas, TX, USA" :datacenterid 2}
 ;           {:location "Fremont, CA, USA" :datacenterid 3}
@@ -54,6 +54,15 @@ All other methods require the `:api-key` param:
 ;           {:location "London, England, UK" :datacenterid 7}
 ;           {:location "Tokyo, JP" :datacenterid 8}]
 ;    :action "avail.datacenters"}
+```
+----
+
+Our you can use the `linode-request` directly. Pass in the API method-keyword and a map of params.
+
+``` clojure
+(linode-request :user.getapikey {:username "danneu" :password "..."})
+(linode-request :account.info {:api-key api-key})
+(linode-request :avail.datacenters {:api-key api-key})
 ```
 
 ## Todo

@@ -25,9 +25,9 @@
                       :else [(hyphenize-key k) v]))
                   hmap))))
 
-(defn request
-  "Usage: (request :user.getapikey {:username _ :password _})
-          (request :account.info {:api-key _})"
+(defn linode-request
+  "Usage: (linode-request :user.getapikey {:username _ :password _})
+          (linode-request :account.info {:api-key _})"
   [meth params]
   (let [url "https://api.linode.com"
         api-action (name meth)
@@ -42,7 +42,7 @@
 (defmacro def-linode-method [meth-keyword]
   (let [meth-name (str/replace (name meth-keyword) "." "-")]
     `(defn ~(symbol meth-name) [params#]
-       (request ~meth-keyword params#))))
+       (linode-request ~meth-keyword params#))))
 
 ;; I couldn't figure out how to do this in a loop.
 (def-linode-method :account.info)
