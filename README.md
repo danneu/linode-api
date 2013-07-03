@@ -24,30 +24,30 @@ A single method `request` is provided. Pass in the API method and a map of param
 
 (linode/request :user.getapikey {:username "danneu" :password "..."})
 ;=> {:errorarray [] 
-     :data {:username "danneu" 
-            :api-key "..."} 
-     :action "user.getapikey"}
+;     :data {:username "danneu" 
+;            :api-key "..."} 
+;     :action "user.getapikey"}
 
 ;; All other methods require the `:api-key` param:
 
 (linode/request :account.info {:api-key api-key})
 ;=> {:errorarray []
-     :data {:transfer-used 1
-            :transfer-billable 0
-            :transfer-pool 2000
-            :active-since "2013-04-04 20:28:24.0"
-            :managed false}
-     :action "account.info"}
+;     :data {:transfer-used 1
+;            :transfer-billable 0
+;            :transfer-pool 2000
+;            :active-since "2013-04-04 20:28:24.0"
+;            :managed false}
+;     :action "account.info"}
 
 (linode/request :avail.datacenters {:api-key api-key})
 ;=> {:errorarray [],
-     :data [{:location "Dallas, TX, USA" :datacenterid 2}
-            {:location "Fremont, CA, USA" :datacenterid 3}
-            {:location "Atlanta, GA, USA" :datacenterid 4}
-            {:location "Newark, NJ, USA" :datacenterid 6}
-            {:location "London, England, UK" :datacenterid 7}
-            {:location "Tokyo, JP" :datacenterid 8}]
-     :action "avail.datacenters"}
+;     :data [{:location "Dallas, TX, USA" :datacenterid 2}
+;            {:location "Fremont, CA, USA" :datacenterid 3}
+;            {:location "Atlanta, GA, USA" :datacenterid 4}
+;            {:location "Newark, NJ, USA" :datacenterid 6}
+;            {:location "London, England, UK" :datacenterid 7}
+;            {:location "Tokyo, JP" :datacenterid 8}]
+;     :action "avail.datacenters"}
 ```
 
 ## Todo
