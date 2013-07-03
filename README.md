@@ -60,7 +60,7 @@ All other methods require the `:api-key` param:
 
 ### Alternative API
 
-Our you can use the `linode-request` directly. Pass in the API method-keyword and a map of params.
+Or you can use the `linode-request` directly. Pass in the API method-keyword and a map of params.
 
 ``` clojure
 (linode-request :user.getapikey {:username "danneu" :password "..."})
